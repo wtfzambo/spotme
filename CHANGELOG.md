@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.1](https://github.com/wtfzambo/spotme/compare/v1.0.0...v1.0.1) (2026-05-13)
+
+
+### Bug Fixes
+
+* normalize repository.url and use Node 24 for npm OIDC ([bfff601](https://github.com/wtfzambo/spotme/commit/bfff601355c8fcb0b396732fdab7ef784f27a202))
+* remove invalid cache param from setup-node ([be8ac22](https://github.com/wtfzambo/spotme/commit/be8ac228abde3ba91a259a437a26654d6e0eb6e8))
+* use npm OIDC trusted publishing (no token needed) ([944a68a](https://github.com/wtfzambo/spotme/commit/944a68a07f95e358a10cad8330adb7224f6ae380))
+
 ## [1.0.0](https://github.com/wtfzambo/spotme/compare/v0.1.0...v1.0.0) (2026-05-13)
 
 
