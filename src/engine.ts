@@ -3,7 +3,7 @@
 
 import { blockedMessage, exerciseReadyMessage, statusMessage } from './prompts.js';
 import type { Difficulty, SpotMeState } from './types.js';
-import { CODE_WRITE_TOOLS, parseArgs } from './types.js';
+import { CODE_EXTENSIONS, CODE_WRITE_TOOLS, parseArgs } from './types.js';
 
 // ─── Platform adapter interface ─────────────────────────────────────────────
 
@@ -146,6 +146,10 @@ export class SpotMeEngine {
 
     // Only count code-writing tools.
     if (!CODE_WRITE_TOOLS.has(toolName)) return { blocked: false };
+
+    // Only count code files (allowlist).
+    const ext = filePath.split('.').pop()?.toLowerCase() ?? '';
+    if (!CODE_EXTENSIONS.has(ext)) return { blocked: false };
 
     this.state.counter++;
     if (this.state.counter >= this.state.every) {

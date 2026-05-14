@@ -20,6 +20,85 @@ export interface SpotMeState {
 /** Tool names that count toward the exercise trigger. */
 export const CODE_WRITE_TOOLS = new Set(['write', 'edit', 'patch', 'create']);
 
+/** File extensions that count as code. Everything else is ignored. */
+export const CODE_EXTENSIONS = new Set([
+  // JavaScript / TypeScript
+  'ts',
+  'tsx',
+  'js',
+  'jsx',
+  'mjs',
+  'cjs',
+  // Python
+  'py',
+  'pyi',
+  // Go
+  'go',
+  // Rust
+  'rs',
+  // Java / Kotlin / JVM
+  'java',
+  'kt',
+  'kts',
+  'scala',
+  'groovy',
+  // C family
+  'c',
+  'h',
+  'cpp',
+  'hpp',
+  'cc',
+  'cxx',
+  'cs',
+  // Web
+  'html',
+  'htm',
+  'css',
+  'scss',
+  'sass',
+  'less',
+  'vue',
+  'svelte',
+  'astro',
+  // Shell / system
+  'sh',
+  'bash',
+  'zsh',
+  'fish',
+  'ps1',
+  'bat',
+  'cmd',
+  'awk',
+  'sed',
+  // Functional
+  'hs',
+  'elm',
+  'clj',
+  'cljs',
+  'erl',
+  'ex',
+  'exs',
+  'ml',
+  'fs',
+  'fsx',
+  // Other languages
+  'php',
+  'rb',
+  'swift',
+  'dart',
+  'lua',
+  'r',
+  'pl',
+  't',
+  'pas',
+  'nim',
+  'zig',
+  'v',
+  'cr',
+  // Data / Query
+  'sql',
+]);
+
 export function parseArgs(
   args: string,
   current: Pick<SpotMeState, 'difficulty' | 'every'>
