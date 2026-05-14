@@ -17,6 +17,10 @@ bun run lint
 bun run build
 ```
 
+## SpotMe flow
+
+All adapters MUST implement the canonical state machine documented in `docs/flow.md`. Read it before touching any adapter code.
+
 <!-- BACKLOG.MD GUIDELINES START -->
 # Instructions for the usage of Backlog.md CLI Tool
 

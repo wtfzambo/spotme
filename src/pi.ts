@@ -88,7 +88,6 @@ export default function (pi: ExtensionAPI) {
   pi.registerCommand('spotme:done', {
     description: 'Submit your implementation for review',
     handler: async () => {
-      engine.endExercise();
       pi.sendUserMessage(PROMPTS.DONE);
     },
   });
@@ -103,7 +102,6 @@ export default function (pi: ExtensionAPI) {
   pi.registerCommand('spotme:solve', {
     description: 'Concede — let the agent complete the exercise',
     handler: async () => {
-      engine.endExercise();
       pi.sendUserMessage(PROMPTS.SOLVE);
     },
   });
@@ -111,7 +109,6 @@ export default function (pi: ExtensionAPI) {
   pi.registerCommand('spotme:skip', {
     description: 'Skip this exercise with no penalty',
     handler: async () => {
-      engine.endExercise();
       pi.sendUserMessage(PROMPTS.SKIP);
     },
   });
