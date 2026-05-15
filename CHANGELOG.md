@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/wtfzambo/spotme/compare/v1.0.1...v1.1.0) (2026-05-15)
+
+
+### Features
+
+* allowlist code file extensions for exercise trigger\n\nCounter only increments for known code extensions.\nEverything else (.md, .json, .yaml, .lock, .env, etc.) is ignored.\n\nKey change: extension-based allowlist instead of blacklist.\nNew set: CODE_EXTENSIONS in types.ts (42 extensions covering\nJS/TS, Python, Go, Rust, Java, C-family, web, shell, functional,\nand other common languages). ([f028629](https://github.com/wtfzambo/spotme/commit/f02862970e2f1437c03e0406813e6c7fe92a0930))
+
 ## [1.0.1](https://github.com/wtfzambo/spotme/compare/v1.0.0...v1.0.1) (2026-05-13)
 
 
