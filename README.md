@@ -113,6 +113,24 @@ Copy `SKILL.md` into your harness's skills directory. This gives the prompt laye
     <i>Like it? Star it!</i>
 </p>
 
+## Local Development
+
+To develop and test a branch locally:
+
+```bash
+# 1. Clone SpotMe locally
+mkdir ~/temp && cd ~/temp
+git clone https://github.com/wtfzambo/spotme.git
+
+# 2. Create a new directory somewhere
+mkdir ./test_spotme && cd ./test_spotme
+
+# 3. Run scripts/test-local-branch.sh from the new folder
+../spotme/scripts/test-local-branch.sh
+```
+
+Then, in `test_spotme`, open your agent harness (OpenCode, Pi...) and verify spotme commands exist. Finally, checkout the SpotMe branch you need.
+
 ## Name
 
 The agent is your **spotter**. It sets up the lift, stands by while you push, catches you if you call for help. The work is yours.
