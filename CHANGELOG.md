@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/wtfzambo/spotme/compare/v1.2.0...v1.2.1) (2026-05-26)
+
+
+### Bug Fixes
+
+* change Pi image ([b8a1fe3](https://github.com/wtfzambo/spotme/commit/b8a1fe3d410ff72348dc20944a75b5797030b983))
+
 ## [1.2.0](https://github.com/wtfzambo/spotme/compare/v1.1.0...v1.2.0) (2026-05-26)
 
 
