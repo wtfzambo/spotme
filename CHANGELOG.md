@@ -2,14 +2,11 @@
 
 ## [1.2.3](https://github.com/wtfzambo/spotme/compare/v1.2.2...v1.2.3) (2026-05-26)
 
-
 ### Bug Fixes
 
-* add root index.ts re-export for clean Pi extension display name ([611fdfe](https://github.com/wtfzambo/spotme/commit/611fdfee754dcc44a19abf9eb4b5cc0c989aa7e9))
 * revert Pi extension back to src/pi.ts ([403afb7](https://github.com/wtfzambo/spotme/commit/403afb7029f0d8220caa88eb87f912fd07bc5d6e))
 
 ## [1.2.2](https://github.com/wtfzambo/spotme/compare/v1.2.1...v1.2.2) (2026-05-26)
-
 
 ### Bug Fixes
 
@@ -17,25 +14,21 @@
 
 ## [1.2.1](https://github.com/wtfzambo/spotme/compare/v1.2.0...v1.2.1) (2026-05-26)
 
-
 ### Bug Fixes
 
 * change Pi image ([b8a1fe3](https://github.com/wtfzambo/spotme/commit/b8a1fe3d410ff72348dc20944a75b5797030b983))
 
 ## [1.2.0](https://github.com/wtfzambo/spotme/compare/v1.1.0...v1.2.0) (2026-05-26)
 
-
 ### Features
 
 * **pi:** test and customize SpotMe for Pi ([55e8415](https://github.com/wtfzambo/spotme/commit/55e84151064ed73d0bb1ac3f1cb25c06bf9fc550))
-
 
 ### Bug Fixes
 
 * **pi:** remove premature endExercise in done/solve/skip commands\n\nThe LLM calls spotme_end as the final step; doing it in the\nhandler wipes exercise state before the LLM can review/solve.\n\nAlso adds docs/flow.md — Mermaid state machine + platform comparison table. ([b57ec3f](https://github.com/wtfzambo/spotme/commit/b57ec3f001b0e72b8da266fe8b4d76db4217aee8))
 
 ## [1.1.0](https://github.com/wtfzambo/spotme/compare/v1.0.1...v1.1.0) (2026-05-15)
-
 
 ### Features
 
