@@ -38,7 +38,7 @@
   ],
   "pi": {
     "extensions": [
-      "./src/pi.ts"
+      "./src/pi/index.ts"
     ],
     "image": "https://raw.githubusercontent.com/wtfzambo/spotme/refs/heads/main/imgs/spotme.png"
   },

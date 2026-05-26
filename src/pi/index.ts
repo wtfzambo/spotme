@@ -6,10 +6,10 @@ import { isToolCallEventType } from '@earendil-works/pi-coding-agent';
 import { Type } from '@sinclair/typebox';
 import { access } from 'fs/promises';
 import { join } from 'path';
-import { SpotMeEngine } from './engine.js';
-import { PROMPTS } from './prompts.js';
-import type { Difficulty } from './types.js';
-import { CODE_WRITE_TOOLS } from './types.js';
+import { SpotMeEngine } from '../engine.js';
+import { PROMPTS } from '../prompts.js';
+import type { Difficulty } from '../types.js';
+import { CODE_WRITE_TOOLS } from '../types.js';
 
 export default function (pi: ExtensionAPI) {
   // Engine is instantiated lazily per-command since Pi doesn't provide cwd at init.
