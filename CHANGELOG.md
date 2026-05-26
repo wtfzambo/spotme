@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/wtfzambo/spotme/compare/v1.2.1...v1.2.2) (2026-05-26)
+
+
+### Bug Fixes
+
+* move Pi adapter to src/pi/index.ts for clean display name ([62f7d00](https://github.com/wtfzambo/spotme/commit/62f7d006632bf21cca1dc8eff6e64256bf8eeff1))
+
 ## [1.2.1](https://github.com/wtfzambo/spotme/compare/v1.2.0...v1.2.1) (2026-05-26)
 
 
