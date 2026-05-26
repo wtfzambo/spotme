@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/wtfzambo/spotme/compare/v1.1.0...v1.2.0) (2026-05-26)
+
+
+### Features
+
+* **pi:** test and customize SpotMe for Pi ([55e8415](https://github.com/wtfzambo/spotme/commit/55e84151064ed73d0bb1ac3f1cb25c06bf9fc550))
+
+
+### Bug Fixes
+
+* **pi:** remove premature endExercise in done/solve/skip commands\n\nThe LLM calls spotme_end as the final step; doing it in the\nhandler wipes exercise state before the LLM can review/solve.\n\nAlso adds docs/flow.md — Mermaid state machine + platform comparison table. ([b57ec3f](https://github.com/wtfzambo/spotme/commit/b57ec3f001b0e72b8da266fe8b4d76db4217aee8))
+
 ## [1.1.0](https://github.com/wtfzambo/spotme/compare/v1.0.1...v1.1.0) (2026-05-15)
 
 
