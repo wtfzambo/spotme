@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.3](https://github.com/wtfzambo/spotme/compare/v1.2.2...v1.2.3) (2026-05-26)
+
+
+### Bug Fixes
+
+* add root index.ts re-export for clean Pi extension display name ([611fdfe](https://github.com/wtfzambo/spotme/commit/611fdfee754dcc44a19abf9eb4b5cc0c989aa7e9))
+* revert Pi extension back to src/pi.ts ([403afb7](https://github.com/wtfzambo/spotme/commit/403afb7029f0d8220caa88eb87f912fd07bc5d6e))
+
 ## [1.2.2](https://github.com/wtfzambo/spotme/compare/v1.2.1...v1.2.2) (2026-05-26)
 
 
