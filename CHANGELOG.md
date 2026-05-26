@@ -9,7 +9,6 @@
 
 ## [1.0.1](https://github.com/wtfzambo/spotme/compare/v1.0.0...v1.0.1) (2026-05-13)
 
-
 ### Bug Fixes
 
 * normalize repository.url and use Node 24 for npm OIDC ([bfff601](https://github.com/wtfzambo/spotme/commit/bfff601355c8fcb0b396732fdab7ef784f27a202))
@@ -18,10 +17,9 @@
 
 ## [1.0.0](https://github.com/wtfzambo/spotme/compare/v0.1.0...v1.0.0) (2026-05-13)
 
-
 ### ⚠ BREAKING CHANGES
 
-* SKILL.md tool/command names changed from spotter_* to spotme_*
+* SKILL.md tool/command names changed from spotter_*to spotme_*
 
 ### Features
 
@@ -31,7 +29,6 @@
 * **spo-12:** bypass LLM for spotme:on/off/status via command.execute.before ([ee63532](https://github.com/wtfzambo/spotme/commit/ee63532acf0e13d362b4a4d144314b5219b0450b))
 * **spo-12:** finalize command.execute.before with toasts + original templates ([cc04bd5](https://github.com/wtfzambo/spotme/commit/cc04bd5f7a61b5506353e1f7edf197f8af5e8efd))
 * **SPO-13/15:** replace BLOCKED_REASON with blockedMessage() for richer scaffold instructions ([d9ec7f6](https://github.com/wtfzambo/spotme/commit/d9ec7f60e7900bd2ae8d52a0543c6538d5fb682d))
-
 
 ### Bug Fixes
 
@@ -47,11 +44,9 @@
 * spotme:on template reads state instead of re-parsing args ([387c1a0](https://github.com/wtfzambo/spotme/commit/387c1a0b6ba9e287117cfdf4ec7ca1aa3c2ab86f))
 * spotme:solve template — write solution BEFORE calling spotme_end ([297b1ee](https://github.com/wtfzambo/spotme/commit/297b1eee5371385db027c6d469f2dd7bffd159d2))
 
-
 ### Performance Improvements
 
 * remove pi.js from npm build to reduce package size ([8b843a6](https://github.com/wtfzambo/spotme/commit/8b843a67af8758b765374ad4316bd272921fd2fa))
-
 
 ### Reverts
 

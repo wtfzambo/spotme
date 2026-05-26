@@ -35,6 +35,22 @@ export default function (pi: ExtensionAPI) {
     },
   });
 
+  // ─── Tool: spotme_status ─────────────────────────────────────────────
+
+  pi.registerTool({
+    name: 'spotme_status',
+    label: 'SpotMe Status',
+    description:
+      'Show the current SpotMe session status (on/off, difficulty, counter, active exercise).',
+    parameters: Type.Object({}),
+    async execute() {
+      return {
+        content: [{ type: 'text' as const, text: engine.getStatus() }],
+        details: {},
+      };
+    },
+  });
+
   // ─── Tool: spotme_exercise ─────────────────────────────────────────────
 
   pi.registerTool({
@@ -60,21 +76,40 @@ export default function (pi: ExtensionAPI) {
     },
   });
 
+  // ─── Tool: spotme_end ──────────────────────────────────────────────────
+
+  pi.registerTool({
+    name: 'spotme_end',
+    label: 'SpotMe End',
+    description:
+      'Close the current SpotMe exercise. Call this as the LAST thing after reviewing, solving, or skipping.',
+    parameters: Type.Object({}),
+    async execute() {
+      return {
+        content: [{ type: 'text' as const, text: engine.endExercise() }],
+        details: {},
+      };
+    },
+  });
+
   // ─── Commands ─────────────────────────────────────────────────────────────
 
   pi.registerCommand('spotme:on', {
     description: 'Enable SpotMe gym mode [lite|medium|hard] [--every N]',
-    handler: async (args) => {
+    handler: async (args, ctx) => {
       engine.activateFromArgs(args ?? '');
-      pi.sendUserMessage(PROMPTS.ON);
+      ctx.ui.notify(
+        `🏋️ SpotMe is on. Difficulty: ${engine.state.difficulty}. Triggering every ${engine.state.every} code write(s).`,
+        'info'
+      );
     },
   });
 
   pi.registerCommand('spotme:off', {
     description: 'Disable SpotMe gym mode',
-    handler: async () => {
+    handler: async (_args, ctx) => {
       engine.deactivate();
-      pi.sendUserMessage(PROMPTS.OFF);
+      ctx.ui.notify('⏹️ SpotMe is off — normal coding resumed.', 'info');
     },
   });
 
@@ -87,8 +122,13 @@ export default function (pi: ExtensionAPI) {
 
   pi.registerCommand('spotme:done', {
     description: 'Submit your implementation for review',
-    handler: async () => {
-      pi.sendUserMessage(PROMPTS.DONE);
+    handler: async (_args, ctx) => {
+      const ex = engine.state.exercise;
+      if (!ex?.active) {
+        ctx.ui.notify('No active SpotMe exercise to review.', 'warning');
+        return;
+      }
+      pi.sendUserMessage(PROMPTS.done({ unit: ex.unit, filePath: ex.filePath }));
     },
   });
 
@@ -101,15 +141,25 @@ export default function (pi: ExtensionAPI) {
 
   pi.registerCommand('spotme:solve', {
     description: 'Concede — let the agent complete the exercise',
-    handler: async () => {
-      pi.sendUserMessage(PROMPTS.SOLVE);
+    handler: async (_args, ctx) => {
+      const ex = engine.state.exercise;
+      if (!ex?.active) {
+        ctx.ui.notify('No active SpotMe exercise to solve.', 'warning');
+        return;
+      }
+      pi.sendUserMessage(PROMPTS.solve({ unit: ex.unit, filePath: ex.filePath }));
     },
   });
 
   pi.registerCommand('spotme:skip', {
     description: 'Skip this exercise with no penalty',
-    handler: async () => {
-      pi.sendUserMessage(PROMPTS.SKIP);
+    handler: async (_args, ctx) => {
+      const ex = engine.state.exercise;
+      if (!ex?.active) {
+        ctx.ui.notify('No active SpotMe exercise to skip.', 'warning');
+        return;
+      }
+      pi.sendUserMessage(PROMPTS.skip({ unit: ex.unit, filePath: ex.filePath }));
     },
   });
 

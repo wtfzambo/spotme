@@ -84,16 +84,15 @@ Add to your `opencode.json`:
 }
 ```
 
-### Pi (WIP)
+### Pi
 
-> [!WARNING]
-> Pi integration is currently Work In Progress and has NOT been tested.
-
-Install as a Pi package once published:
+Install as a Pi package:
 
 ```bash
 pi install npm:spotme
 ```
+
+SpotMe integrates as a Pi extension with programmatic slash commands and custom tools (`spotme_exercise`, `spotme_end`, `spotme_status`). Commands that don't require LLM reasoning (`/spotme:on`, `/spotme:off`, `/spotme:status`) execute instantly via the Pi UI. Commands that need LLM input (`/spotme:done`, `/spotme:solve`, `/spotme:skip`, `/spotme:hint`, `/spotme:rep`) inject exercise details directly into the prompt for seamless review.
 
 ### Skill only (any harness that supports AgentSkills)
 

@@ -134,19 +134,56 @@ export const PROMPTS = {
   /** /spotme:status — display current state. */
   STATUS: 'Call the `spotme_status` tool and display the result to the user.',
 
-  /** /spotme:done — review user's implementation, then close. */
-  DONE: "Call `spotme_status` to get the active exercise details. Read the exercise file. Evaluate the user's implementation: (1) what they got right — 1-2 sentences, specific; (2) what could be better — concrete, no vague feedback; (3) next steps only if incomplete. Do NOT show your own solution. Resume the original task and complete any remaining code. Call `spotme_end` as the LAST thing you do.",
-
   /** /spotme:hint — one hint, no spoilers. */
   HINT: 'Give one targeted hint for the current SpotMe exercise. Point toward the approach without revealing the implementation. One paragraph max.',
 
-  /** /spotme:solve — write solution BEFORE closing exercise. */
-  SOLVE:
-    'Call `spotme_status` to get the active exercise details. Read the exercise file. Write the solution (replace the SPOTME marker if still present, or improve what the user wrote). Briefly note the key pattern the user should remember. Resume the original task and complete any remaining code. Call `spotme_end` as the LAST thing you do.',
-
-  /** /spotme:skip — complete the code, then close. */
-  SKIP: 'The human is skipping this exercise. Resume the original task and complete the code normally. Call `spotme_end` as the LAST thing you do.',
-
   /** /spotme:rep — on-demand exercise. */
   REP: 'The human wants a coding exercise. Write the scaffold for the next logical unit using the Write tool (use a `# SPOTME: <description>` marker where the human should implement), then call `spotme_exercise` with the unit name, file path, and difficulty.',
+
+  /** OpenCode compatibility: static uppercase aliases for the no-arg versions. */
+  get DONE(): string {
+    return this.done();
+  },
+  get SOLVE(): string {
+    return this.solve();
+  },
+  get SKIP(): string {
+    return this.skip();
+  },
+
+  /**
+   * /spotme:done — review user's implementation, then close.
+   * If exercise data is provided (Pi), inject it directly.
+   * Otherwise (OpenCode), tell the LLM to call spotme_status first.
+   */
+  done(exercise?: { unit: string; filePath: string }): string {
+    if (exercise) {
+      return `Current SpotMe exercise: **${exercise.unit}** in \`${exercise.filePath}\`.\n\nRead the exercise file. Evaluate the user's implementation: (1) what they got right — 1-2 sentences, specific; (2) what could be better — concrete, no vague feedback; (3) next steps only if incomplete. Do NOT show your own solution. Resume the original task and complete any remaining code. Call \`spotme_end\` as the LAST thing you do.`;
+    }
+    return "Call `spotme_status` to get the active exercise details. Read the exercise file. Evaluate the user's implementation: (1) what they got right — 1-2 sentences, specific; (2) what could be better — concrete, no vague feedback; (3) next steps only if incomplete. Do NOT show your own solution. Resume the original task and complete any remaining code. Call `spotme_end` as the LAST thing you do.";
+  },
+
+  /**
+   * /spotme:solve — concede and let the agent finish.
+   * If exercise data is provided (Pi), inject it directly.
+   * Otherwise (OpenCode), tell the LLM to call spotme_status first.
+   */
+  solve(exercise?: { unit: string; filePath: string }): string {
+    if (exercise) {
+      return `Current SpotMe exercise: **${exercise.unit}** in \`${exercise.filePath}\`.\n\nRead the exercise file. Write the solution (replace the SPOTME marker if still present, or improve what the user wrote). Briefly note the key pattern the user should remember. Resume the original task and complete any remaining code. Call \`spotme_end\` as the LAST thing you do.`;
+    }
+    return 'Call `spotme_status` to get the active exercise details. Read the exercise file. Write the solution (replace the SPOTME marker if still present, or improve what the user wrote). Briefly note the key pattern the user should remember. Resume the original task and complete any remaining code. Call `spotme_end` as the LAST thing you do.';
+  },
+
+  /**
+   * /spotme:skip — skip this exercise.
+   * If exercise data is provided (Pi), inject it directly.
+   * Otherwise (OpenCode), generic skip prompt.
+   */
+  skip(exercise?: { unit: string; filePath: string }): string {
+    if (exercise) {
+      return `The human is skipping the SpotMe exercise **${exercise.unit}** in \`${exercise.filePath}\`. Resume the original task and complete the code normally. Call \`spotme_end\` as the LAST thing you do.`;
+    }
+    return 'The human is skipping this exercise. Resume the original task and complete the code normally. Call `spotme_end` as the LAST thing you do.';
+  },
 } as const;
