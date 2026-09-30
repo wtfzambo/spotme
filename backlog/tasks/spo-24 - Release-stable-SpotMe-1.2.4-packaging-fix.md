@@ -1,11 +1,11 @@
 ---
 id: SPO-24
 title: Release stable SpotMe 1.2.4 packaging fix
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-09-30 15:32'
-updated_date: '2026-09-30 15:33'
+updated_date: '2026-09-30 15:56'
 labels: []
 dependencies: []
 ordinal: 24000
@@ -19,9 +19,9 @@ Publish the authorized TypeBox packaging fix as stable SpotMe 1.2.4 on npm lates
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The packaging fix is reviewed through a passing pull request and merged into main.
-- [ ] #2 Release automation publishes only on an actual release, with stable version 1.2.4.
-- [ ] #3 GitHub release v1.2.4 and npm latest 1.2.4 exist, and the published tarball declares optional wildcard TypeBox peers and passes host smoke checks.
+- [x] #1 The packaging fix is reviewed through a passing pull request and merged into main.
+- [x] #2 Release automation publishes only on an actual release, with stable version 1.2.4.
+- [x] #3 GitHub release v1.2.4 and npm latest 1.2.4 exist, and the published tarball declares optional wildcard TypeBox peers and passes host smoke checks.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -35,3 +35,9 @@ Publish the authorized TypeBox packaging fix as stable SpotMe 1.2.4 on npm lates
 <!-- SECTION:NOTES:BEGIN -->
 User authorized making a new release. GitHub and npm both currently show 1.2.3; main matches the local base, and no open PRs exist. GitHub authentication and npm OIDC publishing workflow are available. Current release workflow dispatches a next publish on release PR creation; repository release-please config enables prereleases, while the action uses its legacy release-type input. Stable release automation changes need plan approval before editing.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Released SpotMe 1.2.4 through the existing release-please flow: fix commit pushed to main, release PR #15 merged (admin bypass of the 1 review ruleset, as the sole maintainer), GitHub release v1.2.4 created, npm latest=1.2.4 published by the OIDC workflow. Published manifest has no TypeBox dependency and declares optional wildcard TypeBox and Pi peers.
+<!-- SECTION:FINAL_SUMMARY:END -->
