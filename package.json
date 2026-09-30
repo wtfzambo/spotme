@@ -25,6 +25,7 @@
   "scripts": {
     "build": "bun build src/index.ts src/opencode.ts --outdir dist --target bun",
     "typecheck": "tsc --noEmit",
+    "test:packaging": "node scripts/check-packaging.mjs",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "format": "prettier --write src"
@@ -43,19 +44,23 @@
     "image": "https://raw.githubusercontent.com/wtfzambo/spotme/refs/heads/main/imgs/spotme.png"
   },
   "dependencies": {
-    "@opencode-ai/plugin": "^1.14.0",
-    "@sinclair/typebox": "^0.34.0"
+    "@opencode-ai/plugin": "^1.14.0"
   },
   "peerDependencies": {
-    "@earendil-works/pi-coding-agent": "*"
+    "@earendil-works/pi-coding-agent": "*",
+    "@sinclair/typebox": "*"
   },
   "peerDependenciesMeta": {
     "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "@sinclair/typebox": {
       "optional": true
     }
   },
   "devDependencies": {
     "@earendil-works/pi-coding-agent": "^0.74.0",
+    "@sinclair/typebox": "^0.34.0",
     "@types/bun": "^1.1.0",
     "@types/node": "^22.0.0",
     "@typescript-eslint/eslint-plugin": "8.47.0",

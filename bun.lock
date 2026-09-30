@@ -6,10 +6,10 @@
       "name": "spotme",
       "dependencies": {
         "@opencode-ai/plugin": "^1.14.0",
-        "@sinclair/typebox": "^0.34.0",
       },
       "devDependencies": {
         "@earendil-works/pi-coding-agent": "^0.74.0",
+        "@sinclair/typebox": "^0.34.0",
         "@types/bun": "^1.1.0",
         "@types/node": "^22.0.0",
         "@typescript-eslint/eslint-plugin": "8.47.0",
@@ -24,9 +24,11 @@
       },
       "peerDependencies": {
         "@earendil-works/pi-coding-agent": "*",
+        "@sinclair/typebox": "*",
       },
       "optionalPeers": [
         "@earendil-works/pi-coding-agent",
+        "@sinclair/typebox",
       ],
     },
   },

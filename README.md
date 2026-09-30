@@ -94,6 +94,8 @@ pi install npm:spotme
 
 SpotMe integrates as a Pi extension with programmatic slash commands and custom tools (`spotme_exercise`, `spotme_end`, `spotme_status`). Commands that don't require LLM reasoning (`/spotme:on`, `/spotme:off`, `/spotme:status`) execute instantly via the Pi UI. Commands that need LLM input (`/spotme:done`, `/spotme:solve`, `/spotme:skip`, `/spotme:hint`, `/spotme:rep`) inject exercise details directly into the prompt for seamless review.
 
+Pi supplies `@sinclair/typebox` at runtime. Both TypeBox and the Pi API are optional peer dependencies: OpenCode-only installations need neither, since the OpenCode adapter uses `@opencode-ai/plugin`'s schemas. Development installs retain both packages for typechecking.
+
 ### Skill only (any harness that supports AgentSkills)
 
 Copy `SKILL.md` into your harness's skills directory. This gives the prompt layer without the automated tool interception — commands still work, but the counter-based trigger won't fire automatically.
@@ -113,6 +115,24 @@ Copy `SKILL.md` into your harness's skills directory. This gives the prompt laye
 </p>
 
 ## Local Development
+
+Run the repository checks with Bun:
+
+```bash
+bun install --frozen-lockfile
+bun run typecheck
+bun run lint
+bun run build
+bun run test:packaging
+```
+
+The packaging check creates an npm tarball, installs it with Bun in a temporary directory without development dependencies, and checks both OpenCode entrypoints and Pi package discovery/tool registration. It uses the development Pi SDK by default. To verify against another npm-installed host (including Pi 0.99.1), pass that package's directory:
+
+```bash
+PI_SDK_PATH=/path/to/node_modules/@earendil-works/pi-coding-agent bun run test:packaging
+```
+
+On Pi versions exposing package warnings, the test also restores the broken manifest temporarily to confirm that the original warning is detected, then verifies the fixed manifest has no warnings. Temporary files are cleaned up; nothing is published and user Pi settings are not changed. See [release preparation](docs/releasing.md) before pushing release-related changes.
 
 To develop and test a branch locally:
 
