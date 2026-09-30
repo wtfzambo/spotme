@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/wtfzambo/spotme/compare/v1.2.3...v1.2.4) (2026-09-30)
+
+
+### Bug Fixes
+
+* **packaging:** declare TypeBox as an optional host peer ([db8d910](https://github.com/wtfzambo/spotme/commit/db8d91073eedcb461d63531a6f8b77cb1d1b3422))
+
 ## [1.2.3](https://github.com/wtfzambo/spotme/compare/v1.2.2...v1.2.3) (2026-05-26)
 
 ### Bug Fixes
